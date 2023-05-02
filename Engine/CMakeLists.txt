@@ -150,7 +150,16 @@ set(ALL_FILES
 ################################################################################
 # Target
 ################################################################################
-add_definitions(-DLINUX)
+if(UNIX)
+    add_definitions(-DLINUX)
+endif()
+
+if(WIN32)
+    add_definitions(-DWINDOWS)
+endif()
+
+add_definitions(-DLOGFPS)
+
 add_definitions(-DDEBUGLOG)
 add_definitions(-DDEBUGENTITY)
 

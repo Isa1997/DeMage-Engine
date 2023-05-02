@@ -58,15 +58,14 @@ endif()
 # Define directories
 ################################################################################
 
-add_definitions(-DENGINELOG)
 add_definitions(-DSDL_MAIN_HANDLED) 
 
 if(UNIX)
-add_definitions(-DLINUX) 
+    add_definitions(-DLINUX)
 endif()
 
 if(WIN32)
-add_definitions(-DWINDOWS) 
+    add_definitions(-DWINDOWS)
 endif()
 ################################################################################
 # Source groups
