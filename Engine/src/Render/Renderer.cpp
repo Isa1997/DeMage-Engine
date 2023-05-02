@@ -5,7 +5,7 @@
 #include "ECS/Entity.h"
 #include "Render/Window.h"
 #include "Render/Texture.h"
-#define _DEBUG
+
 namespace Engine
 {
     bool Renderer::Init(const WindowData& windowData_)
