@@ -19,6 +19,7 @@
 *Makefile*
 *.a
 Game/Game
+*.vscode
 
 dependencies*
 

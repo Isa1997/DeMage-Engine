@@ -21,7 +21,7 @@ namespace Engine {
     };
 }
 
-#ifdef _DEBUG
+#ifdef DEBUGLOG
 
 #define LOG_CRITICAL(...) \
     do \
@@ -57,12 +57,11 @@ namespace Engine {
         if(!(x)) \
         { \
             ::Engine::Logger::GetLogger().critical(__VA_ARGS__); \
-            __debugbreak(); \
         } \
     } \
     while (0)
 
-#else  // _DEBUG
+#else  // DEBUGLOG
 
 // These are the release mode definitions for the macros above.
 #define LOG_CRITICAL(...)

@@ -150,7 +150,10 @@ set(ALL_FILES
 ################################################################################
 # Target
 ################################################################################
-add_definitions(-DLINUX) 
+add_definitions(-DLINUX)
+add_definitions(-DDEBUGLOG)
+add_definitions(-DDEBUGENTITY)
+
 
 add_library(${PROJECT_NAME} STATIC ${ALL_FILES})
 
