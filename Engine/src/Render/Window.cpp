@@ -2,8 +2,6 @@
 
 #include "Window.h"
 
-#include <SDL.h>
-
 namespace Engine
 {
     bool Window::Init(const WindowData& windowData_)

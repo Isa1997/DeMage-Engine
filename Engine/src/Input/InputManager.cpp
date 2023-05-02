@@ -3,13 +3,12 @@
 #include "InputManager.h"
 
 #include "ECS/EntityManager.h"
-
 namespace Engine
 {
-    bool KeyDown(KeyboardButton _iKey)
+    bool KeyDown(KeyboardButton iKey)
     {
-        short iState = GetAsyncKeyState(static_cast<int>(_iKey));
-        return (iState & 0x8000) != 0;
+        const unsigned char* state = SDL_GetKeyboardState(nullptr);
+        return state[static_cast<int>(iKey)] != 0;
     }
 
     bool InputManager::Init()
@@ -45,7 +44,7 @@ namespace Engine
                 break;
             }
             default:
-                ASSERT("Unknown EInputActionState {0}", m_InputActionStates[action]);
+                //ASSERT("Unknown EInputActionState {0}", m_InputActionStates[action]);
                 m_InputActionStates[action] = EInputActionState::None;
                 break;
             }
@@ -85,12 +84,12 @@ namespace Engine
         m_InputActionStates.clear();
         m_InputActions.clear();
 
-        m_InputActions["PlayerMoveUp"] = VK_UP;
-        m_InputActions["PlayerMoveLeft"] = VK_LEFT;
-        m_InputActions["PlayerMoveDown"] = VK_DOWN;
-        m_InputActions["PlayerMoveRight"] = VK_RIGHT;
-        m_InputActions["PauseGame"] = VK_ESCAPE;
-        m_InputActions["RestartGame"] = 'R';
+        m_InputActions["PlayerMoveUp"] = SDL_SCANCODE_UP;
+        m_InputActions["PlayerMoveLeft"] = SDL_SCANCODE_LEFT;
+        m_InputActions["PlayerMoveDown"] = SDL_SCANCODE_DOWN;
+        m_InputActions["PlayerMoveRight"] = SDL_SCANCODE_RIGHT;
+        m_InputActions["PauseGame"] = SDL_SCANCODE_P;
+        m_InputActions["RestartGame"] = SDL_SCANCODE_R;
     }
 
     bool InputManager::IsActionActive(InputComponent* inputComponent, EInputAction targetAction)

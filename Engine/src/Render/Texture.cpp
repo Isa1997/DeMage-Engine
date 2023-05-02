@@ -3,8 +3,6 @@
 #include "Texture.h"
 
 #include "Render/Renderer.h"
-#include <SDL.h>
-#include <SDL_image.h>
 
 namespace Engine
 {

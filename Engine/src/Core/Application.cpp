@@ -6,7 +6,6 @@
 #include "Render/Texture.h"
 #include "Render/Window.h"
 #include "Render/WindowData.h"
-#include <SDL.h>
 
 namespace Engine 
 {
@@ -63,7 +62,9 @@ namespace Engine
 
             float deltaTime = (frameTime - previousFrameTime) / static_cast<float>(SDL_GetPerformanceFrequency());
 
+#ifdef LOGFPS
             LOG_INFO("Current FPS: {}", 1.f / deltaTime);
+#endif
             Update(deltaTime);
 
             previousFrameTime = frameTime;

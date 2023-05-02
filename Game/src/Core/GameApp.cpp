@@ -1,12 +1,13 @@
-#include "precomp.h"
+
+#include "src/precomp.h"
 
 #include "GameApp.h"
 
 #include <Core/EntryPoint.h>
 #include <ECS/Component.h>
 #include <Engine.h>
-#include "Entities/PlayerController.h"
-#include "Entities/CameraController.h"
+#include "src/Entities/PlayerController.h"
+#include "src/Entities/CameraController.h"
 #include <Logger/Logger.h>
 
 void Game::GameApp::GameSpecificWindowData()

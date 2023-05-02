@@ -1,9 +1,12 @@
+#define SDL_MAIN_HANDLED 
 #include "precomp.h"
 #include "Core/Application.h"
 #include "Render/RenderSystem.h"
 #include "Render/Renderer.h"
 
-int main(int argc, char* args[])
+#include <SDL.h>
+
+int main()
 {
     Engine::Logger::Init();
     LOG_INFO("Logger initialized!");

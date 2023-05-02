@@ -5,7 +5,6 @@
 #include "ECS/Entity.h"
 #include "Render/Window.h"
 #include "Render/Texture.h"
-#include <SDL.h>
 
 namespace Engine
 {
@@ -104,7 +103,7 @@ namespace Engine
                 NULL,
                 flip);
 
-#ifdef _DEBUG
+#ifdef DEBUGENTITY
             // DebugDraw
             SDL_SetRenderDrawColor(m_NativeRenderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
 
@@ -119,7 +118,7 @@ namespace Engine
             }
             
             SetBackgroundColor(m_BackgroundColor);
-#endif
+#endif //DEBUGENTITY
         }
     }
 

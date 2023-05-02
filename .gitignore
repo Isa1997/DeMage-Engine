@@ -10,6 +10,19 @@
 *.userosscache
 *.sln.docstates
 
+#custom
+*build*
+*CMakeFiles*
+*vcpkg*
+*cmake_install.cmake
+*CMakeCache*
+*Makefile*
+*.a
+Game/Game
+*.vscode
+
+dependencies*
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
