@@ -19,6 +19,15 @@ if(UNIX)
     pkg_check_modules(SDL2_Mixer REQUIRED IMPORTED_TARGET SDL2_mixer)
     pkg_check_modules(SDL2_image REQUIRED IMPORTED_TARGET SDL2_image)
     pkg_check_modules(SDL2_ttf REQUIRED IMPORTED_TARGET SDL2_ttf)
+
+    find_package(glm REQUIRED)
+    include_directories(${glm_INCLUDE_DIRS})
+    
+    find_package(spdlog REQUIRED)
+    include_directories(${spdlog_INCLUDE_DIRS})
+    
+    find_package(fmt REQUIRED)
+    include_directories(${fmt_INCLUDE_DIRS})
 endif()
 
 if(WIN32)
@@ -49,9 +58,16 @@ endif()
 # Define directories
 ################################################################################
 
-add_definitions(-DENGINELOG) 
+add_definitions(-DENGINELOG)
 add_definitions(-DSDL_MAIN_HANDLED) 
 
+if(UNIX)
+add_definitions(-DLINUX) 
+endif()
+
+if(WIN32)
+add_definitions(-DWINDOWS) 
+endif()
 ################################################################################
 # Source groups
 ################################################################################
@@ -68,11 +84,11 @@ set(src__Core
 source_group("Core" FILES ${Core})
 
 set(src__Entities
-    "src/Entities/Cameracontroller.cpp"
-    "src/Entities/Cameracontroller.h"
-    "src/Entities/playercontroller.cpp"
-    "src/Entities/playercontroller.h"
-    "src/Entities/gamecomponents.h"
+    "src/Entities/CameraController.cpp"
+    "src/Entities/CameraController.h"
+    "src/Entities/PlayerController.cpp"
+    "src/Entities/PlayerController.h"
+    "src/Entities/GameComponents.h"
 )
 source_group("src//Entities" FILES ${src__Entities})
 
@@ -126,6 +142,7 @@ if(UNIX)
     target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::SDL2_Mixer)
     target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::SDL2_image)
     target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::SDL2_ttf)
+    target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
     target_link_libraries(${PROJECT_NAME} PRIVATE m)
 endif()
 

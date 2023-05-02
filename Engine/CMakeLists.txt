@@ -79,8 +79,8 @@ source_group("src\\Controller" FILES ${src__Controller})
 set(src__Core
     "src/Core/Application.cpp"
     "src/Core/Application.h"
-    "src/Core/enginesystems.cpp"
-    "src/Core/enginesystems.h"
+    "src/Core/EngineSystems.cpp"
+    "src/Core/EngineSystems.h"
     "src/Core/EntryPoint.h"
 )
 
@@ -150,6 +150,8 @@ set(ALL_FILES
 ################################################################################
 # Target
 ################################################################################
+add_definitions(-DLINUX) 
+
 add_library(${PROJECT_NAME} STATIC ${ALL_FILES})
 
 add_precompiled_header(${PROJECT_NAME} "precomp.h" "precomp.cpp")
@@ -164,6 +166,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     "${CMAKE_CURRENT_SOURCE_DIR};"
     "${CMAKE_CURRENT_SOURCE_DIR}/src;"
 )
+
+
 
 ################################################################################
 # Dependencies

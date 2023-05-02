@@ -84,7 +84,7 @@ namespace Engine
 
             m_Components.erase(std::remove_if(begin(m_Components),
                                                 end(m_Components),
-                                                [](const Component* component) { return component->GetType() == Component::GetComponentTypeID<TComponent>(); }));
+                                                [](const Component* component) { return component->m_TypeId == Component::GetComponentTypeID<TComponent>(); }));
         }
     };
 }
