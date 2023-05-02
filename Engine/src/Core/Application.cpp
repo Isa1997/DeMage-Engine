@@ -6,7 +6,6 @@
 #include "Render/Texture.h"
 #include "Render/Window.h"
 #include "Render/WindowData.h"
-#include <SDL.h>
 
 namespace Engine 
 {

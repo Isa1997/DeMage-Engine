@@ -1,6 +1,7 @@
 #include "precomp.h"
 
 #include "AudioSystem.h"
+#include <SDL_mixer.h>
 
 bool Engine::AudioSystem::Init()
 {

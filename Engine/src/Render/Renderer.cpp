@@ -5,7 +5,6 @@
 #include "ECS/Entity.h"
 #include "Render/Window.h"
 #include "Render/Texture.h"
-#include <SDL.h>
 
 namespace Engine
 {

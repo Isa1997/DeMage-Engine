@@ -2,6 +2,7 @@
 
 #define _HAS_EXCEPTIONS 0
 #define SPDLOG_NO_EXCEPTIONS
+#define SDL_MAIN_HANDLED
 
 #include <iostream>
 #include <memory>
@@ -14,6 +15,7 @@
 #include <vector>
 #include <set>
 
+#include <spdlog/spdlog.h>
 #include "Logger/Logger.h"
 
 #include <glm/glm.hpp>
@@ -24,3 +26,10 @@ using vec3 = glm::vec3;
 using vec4 = glm::vec4;
 using mat4x4 = glm::mat4x4;
 using Color = glm::u8vec4;
+
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_image.h>
+#include <fmt/compile.h>
+#include <fmt/format.h>
+#include <fmt/core.h>

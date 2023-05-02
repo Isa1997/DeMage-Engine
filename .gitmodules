@@ -13,3 +13,6 @@
 [submodule "dependecies/SDL_mixer"]
 	path = dependecies/SDL_mixer
 	url = https://github.com/libsdl-org/SDL_mixer
+[submodule "dependencies/vcpkg"]
+	path = dependencies/vcpkg
+	url = https://github.com/microsoft/vcpkg

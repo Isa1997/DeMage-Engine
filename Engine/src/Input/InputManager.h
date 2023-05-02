@@ -3,6 +3,7 @@
 #include "InputAction.h"
 
 using KeyboardButton = int;
+using EInputActionState = std::string;
 
 namespace Engine
 {

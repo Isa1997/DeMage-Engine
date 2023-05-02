@@ -19,3 +19,7 @@
 #include "Render/RenderSystem.h"
 #include "Render/Texture.h"
 #include "Render/TextureManager.h"
+
+#include <SDL.h>
+#include <SDL_mixer.h>
+#include <SDL_image.h>

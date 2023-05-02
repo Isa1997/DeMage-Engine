@@ -5,6 +5,7 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/dist_sink.h>
 #include <spdlog/sinks/msvc_sink.h>
+#include <fmt/format.h>
 
 using consoleSink_t = spdlog::sinks::windebug_sink_st;
 using fileSink_t = spdlog::sinks::basic_file_sink_st;

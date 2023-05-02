@@ -3,7 +3,6 @@
 #include "InputManager.h"
 
 #include "ECS/EntityManager.h"
-
 namespace Engine
 {
     bool KeyDown(KeyboardButton _iKey)
@@ -45,7 +44,7 @@ namespace Engine
                 break;
             }
             default:
-                ASSERT("Unknown EInputActionState {0}", m_InputActionStates[action]);
+                //ASSERT("Unknown EInputActionState {0}", m_InputActionStates[action]);
                 m_InputActionStates[action] = EInputActionState::None;
                 break;
             }

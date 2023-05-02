@@ -1,8 +1,9 @@
 #pragma once
 
-#include <SDL.h>
-#include <SDL_mixer.h>
+
 #include <unordered_map>
+
+#include <SDL_mixer.h>
 
 namespace Engine
 {
