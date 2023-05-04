@@ -14,12 +14,12 @@ namespace Engine
     {
         LOG_INFO("Initializing RenderSystem");
         SDL_SetMainReady();
-        if (SDL_Init(SDL_INIT_VIDEO) < 0)
+        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER) < 0)
         {
             LOG_CRITICAL("Unable to initialize SDL. SDL error: {}", SDL_GetError());
             return false;
         }
-
+        LOG_CRITICAL("Unable to initialize SDL. SDL error: {}", SDL_GetError());
         if (IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG) < 0)
         {
             LOG_CRITICAL("Unable to initialize SDL_Image");

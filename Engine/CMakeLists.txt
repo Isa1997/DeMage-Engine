@@ -98,7 +98,9 @@ set(src__ECS
 source_group("src\\ECS" FILES ${src__ECS})
 
 set(src__Input
-    "src/Input/InputAction.h"
+    "src/Input/InputAction.h"    
+    "src/Input/inputbinding.h"   
+    "src/Input/inputenums.h"
     "src/Input/InputManager.cpp"
     "src/Input/InputManager.h"
 )

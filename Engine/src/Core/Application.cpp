@@ -2,6 +2,7 @@
 
 #include "Application.h"
 
+#include "Input/inputenums.h"
 #include "Render/Renderer.h"
 #include "Render/Texture.h"
 #include "Render/Window.h"
@@ -55,6 +56,17 @@ namespace Engine
                 if (event.type == SDL_QUIT)
                 {
                     m_Running = false;
+                }
+                else if (event.type == SDL_CONTROLLERDEVICEADDED)
+                {
+                    m_EngineSystem.m_InputManager->SwitchActiveInputSource(EInputSource::Controller);
+                }
+                else if (event.type == SDL_KEYDOWN)
+                {
+                    if (event.key.keysym.scancode == SDL_SCANCODE_K)
+                    {
+                        m_EngineSystem.m_InputManager->ToggleActiveInputSource();
+                    }
                 }
             }
 

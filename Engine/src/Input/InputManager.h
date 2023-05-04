@@ -1,9 +1,8 @@
 #pragma once
 
-#include "InputAction.h"
-
-using KeyboardButton = int;
-using EInputActionState = std::string;
+#include "Input/InputAction.h"
+#include "Input/inputenums.h"
+#include "Input/inputbinding.h"
 
 namespace Engine
 {
@@ -17,6 +16,9 @@ namespace Engine
         void Update(float dt, EntityManager* entityManager);
         void Shutdown();
 
+        void SwitchActiveInputSource(EInputSource newSource);
+        void ToggleActiveInputSource();
+
         static bool IsActionActive(InputComponent* inputComponent, EInputAction targetAction);
 
         InputManager() = default;
@@ -26,8 +28,14 @@ namespace Engine
         bool IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const;
         void InitKeybinds();
 
-        std::unordered_map<EInputAction, KeyboardButton> m_InputActions{ };
+        void InitActiveController();
+
+        SDL_GameController* m_ActiveController = nullptr;
+
+        std::unordered_map<EInputAction, InputBinding> m_InputActions{ };
         std::unordered_map<EInputAction, EInputActionState> m_InputActionStates{ };
+
+        EInputSource m_InputSource{ EInputSource::Keyboard };
 
         InputManager(const InputManager& other) = delete;
         InputManager& operator=(InputManager& other) = delete;
