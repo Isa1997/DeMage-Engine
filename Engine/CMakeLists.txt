@@ -42,6 +42,9 @@ if(WIN32)
         
         find_package(fmt REQUIRED)
         include_directories(${fmt_INCLUDE_DIRS})
+        
+        find_package(ImGui REQUIRED)
+        include_directories(${ImGui_INCLUDE_DIRS})
 endif()
 
 
@@ -198,6 +201,7 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE "${spdlog_LIBRARIES}")
     target_link_libraries(${PROJECT_NAME} PRIVATE "${glm_LIBRARIES}")
     target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
+    target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 endif()
 
 if(UNIX)
