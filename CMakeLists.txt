@@ -57,5 +57,4 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 ################################################################################
 add_subdirectory(Utils)
 add_subdirectory(Engine)
-add_subdirectory(UIWiz)
 add_subdirectory(Game)
