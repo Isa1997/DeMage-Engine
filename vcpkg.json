@@ -8,6 +8,7 @@
 	"sdl2-ttf",
 	"spdlog",
 	"glm",
+	"nlohmann-json"
 	"imgui"
   ]
 }
