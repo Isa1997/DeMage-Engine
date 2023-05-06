@@ -100,12 +100,20 @@ set(src__ECS
 
 source_group("src\\ECS" FILES ${src__ECS})
 
+set(src__IJSONParser
+    "src/IJSONParser/ijsonparser.cpp"
+    "src/IJSONParser/ijsonparser.h"
+)
+
+source_group("src\\IJSONParser" FILES ${src__IJSONParser})
+
 set(src__Input
     "src/Input/InputAction.h"    
     "src/Input/inputbinding.h"   
     "src/Input/inputenums.h"
     "src/Input/InputManager.cpp"
     "src/Input/InputManager.h"
+    "src/Input/sdlinputbinding.h"
 )
 
 source_group("src\\Input" FILES ${src__Input})
@@ -146,6 +154,7 @@ set(ALL_FILES
     ${src__Core}
     ${src__Audio}
     ${src__ECS}
+    ${src__IJSONParser}
     ${src__Input}
     ${src__Logger}
     ${src__PhysicsSystem}

@@ -1,17 +1,25 @@
 #pragma once
 
-#include "Input/InputAction.h"
-#include "Input/inputenums.h"
-#include "Input/inputbinding.h"
+#include "src/IJSONParser/ijsonparser.h"
+#include "src/Input/InputAction.h"
+#include "src/Input/inputenums.h"
+#include "src/Input/inputbinding.h"
+
+#include <SDL_scancode.h>
+#include <SDL_gamecontroller.h>
 
 namespace Engine
 {
     class EntityManager;
     struct InputComponent;
 
-    class InputManager
+    class InputManager : public IJSONParser
     {
     public:
+        inline static const std::string s_BindingInputFile = "./Data/Input/input_config.json";
+    public:
+        InputManager() = default;
+
         bool Init();
         void Update(float dt, EntityManager* entityManager);
         void Shutdown();
@@ -21,14 +29,17 @@ namespace Engine
 
         static bool IsActionActive(InputComponent* inputComponent, EInputAction targetAction);
 
-        InputManager() = default;
+
+        void ProcessJSON(json input) override;
 
     private:
         void ProcessInput();
         bool IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const;
         void InitKeybinds();
-
         void InitActiveController();
+
+        SDL_Scancode FindKeyboardSDLBinding(const std::string& input) const;
+        SDL_GameControllerButton FindControllerSDLBinding(const std::string& input) const;
 
         SDL_GameController* m_ActiveController = nullptr;
 

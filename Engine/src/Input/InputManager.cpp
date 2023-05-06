@@ -2,8 +2,8 @@
 
 #include "InputManager.h"
 
-#include "ECS/EntityManager.h"
-#include <SDL2/SDL_gamecontroller.h>
+#include "src/ECS/EntityManager.h"
+#include "src/Input/sdlinputbinding.h"
 
 namespace Engine
 {
@@ -137,7 +137,12 @@ namespace Engine
 
     bool InputManager::IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const
     {
-        ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action: {}", _eAction);
+        if (m_InputActionStates.find(_eAction) == m_InputActionStates.end())
+        {
+            ASSERT(m_InputActionStates.find(_eAction) != m_InputActionStates.end(), "Unknown input action: {}", _eAction);
+            return false;
+        }
+
         return m_InputActionStates.at(_eAction) == _eState;
     }
 
@@ -146,12 +151,62 @@ namespace Engine
         m_InputActionStates.clear();
         m_InputActions.clear();
 
-        m_InputActions["PlayerMoveUp"] = { SDL_SCANCODE_UP, SDL_CONTROLLER_BUTTON_DPAD_UP };
-        m_InputActions["PlayerMoveLeft"] = { SDL_SCANCODE_LEFT, SDL_CONTROLLER_BUTTON_DPAD_LEFT };
-        m_InputActions["PlayerMoveDown"] = { SDL_SCANCODE_DOWN, SDL_CONTROLLER_BUTTON_DPAD_DOWN };
-        m_InputActions["PlayerMoveRight"] = { SDL_SCANCODE_RIGHT, SDL_CONTROLLER_BUTTON_DPAD_RIGHT};
-        m_InputActions["PauseGame"] = { SDL_SCANCODE_P, SDL_CONTROLLER_BUTTON_BACK };
-  
+        ProcessJSON(ReadFile(s_BindingInputFile));
+    }
+
+    void InputManager::ProcessJSON(json input)
+    {
+        if (input.empty() || input.is_discarded())
+        {
+            LOG_CRITICAL("json input is invalid! Could not initialize input bindings!");
+            return;
+        }
+        
+        const auto& controlls = input["Controlls"];
+
+        for (const auto& controll : controlls)
+        {
+            std::string controllName = controll["Name"];
+
+            const auto& binding  = controll["Bindings"];
+            std::string keyboard = binding["Keyboard"];
+            std::string controller = binding["Controller"];
+
+            SDL_Scancode keyboardCode = FindKeyboardSDLBinding(keyboard);
+            SDL_GameControllerButton controllerCode = FindControllerSDLBinding(controller);
+
+            m_InputActions[controllName] = { keyboardCode, controllerCode };
+        }
+    }
+
+    SDL_Scancode InputManager::FindKeyboardSDLBinding(const std::string& input) const
+    {
+        SDL_Scancode keyboardCode = SDL_Scancode::SDL_SCANCODE_UNKNOWN;
+        const auto& mapping = g_KeyboardMap.find(input);
+        if (mapping == g_KeyboardMap.end())
+        {
+            LOG_CRITICAL("Could not find controll Name in mapping! ControllName = %s", input);
+        }
+        else
+        {
+            keyboardCode = mapping->second;
+        }
+        return keyboardCode;
+    }
+
+    SDL_GameControllerButton InputManager::FindControllerSDLBinding(const std::string& input) const
+    {
+        SDL_GameControllerButton controllerCode = SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_INVALID;
+        const auto& controllerMapping = g_ControllerMapping.find(input);
+        if (controllerMapping == g_ControllerMapping.end())
+        {
+            LOG_CRITICAL("Could not find controll Name in mapping! ControllName = %s", input);
+        }
+        else
+        {
+            controllerCode = controllerMapping->second;
+        }
+        return controllerCode;
     }
 
     bool InputManager::IsActionActive(InputComponent* inputComponent, EInputAction targetAction)

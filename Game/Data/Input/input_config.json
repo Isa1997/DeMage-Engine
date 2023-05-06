@@ -1,0 +1,32 @@
+{
+  "Controlls": {
+    {
+      "Name": "PlayerMoveUp",
+      "Bindings": {
+        "Controller": "DPAD_UP",
+        "Keyboard": "W"
+      }
+    },
+    {
+      "Name": "PlayerMoveDown",
+      "Bindings": {
+        "Controller": "DPAD_DOWN",
+        "Keyboard": "S"
+      }
+    },
+    {
+      "Name": "PlayerMoveLeft",
+      "Bindings": {
+        "Controller": "DPAD_LEFT",
+        "Keyboard": "A"
+      }
+    },
+    {
+      "Name": "PlayerMoveRight",
+      "Bindings": {
+        "Controller": "DPAD_RIGHT",
+        "Keyboard": "D"
+      }
+    }
+  }
+}
