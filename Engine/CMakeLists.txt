@@ -45,6 +45,9 @@ if(WIN32)
 
         find_package(nlohmann_json CONFIG REQUIRED)
         include_directories(${nlohmann_json_INCLUDE_DIRS})
+        
+        find_package(ImGui REQUIRED)
+        include_directories(${ImGui_INCLUDE_DIRS})
 endif()
 
 
@@ -202,6 +205,7 @@ if(WIN32)
     target_link_libraries(${PROJECT_NAME} PRIVATE "${glm_LIBRARIES}")
     target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
     target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json)
+    target_link_libraries(${PROJECT_NAME} PRIVATE imgui::imgui)
 endif()
 
 if(UNIX)
