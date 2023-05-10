@@ -2,8 +2,8 @@
 
 #include "src/IJSONParser/ijsonparser.h"
 #include "src/Input/InputAction.h"
-#include "src/Input/inputenums.h"
 #include "src/Input/inputbinding.h"
+#include "src/Input/inputenums.h"
 
 #include <SDL_scancode.h>
 #include <SDL_gamecontroller.h>

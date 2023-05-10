@@ -1,10 +1,8 @@
-#define SDL_MAIN_HANDLED 
 #include "precomp.h"
-#include "Core/Application.h"
-#include "Render/RenderSystem.h"
-#include "Render/Renderer.h"
 
-#include <SDL.h>
+#include "src/Core/Application.h"
+#include "src/Render/RenderSystem.h"
+#include "src/Render/Renderer.h"
 
 int main()
 {

@@ -1,9 +1,9 @@
 #include "precomp.h"
 
-#include "TextureManager.h"
+#include "src/Render/TextureManager.h"
 
-#include "Render/Renderer.h"
-#include "Render/Texture.h"
+#include "src/Render/Renderer.h"
+#include "src/Render/Texture.h"
 
 namespace Engine
 {

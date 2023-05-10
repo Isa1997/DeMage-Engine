@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Render/Renderer.h"
-#include "Texture.h"
+#include "src/Render/Renderer.h"
+#include "src/Render/Texture.h"
 
 namespace Engine
 {
-    struct Texture;
-
     class TextureManager
     {
     public:

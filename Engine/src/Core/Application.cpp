@@ -1,12 +1,11 @@
 #include "precomp.h"
 
-#include "Application.h"
+#include "src/Core/Application.h"
 
-#include "Input/inputenums.h"
-#include "Render/Renderer.h"
-#include "Render/Texture.h"
-#include "Render/Window.h"
-#include "Render/WindowData.h"
+#include "src/Input/inputenums.h"
+#include "src/Render/Renderer.h"
+#include "src/Render/Texture.h"
+#include "src/Render/Window.h"
 
 namespace Engine 
 {

@@ -1,9 +1,9 @@
 #include "precomp.h"
 
-#include "InputManager.h"
+#include "src/Input/InputManager.h"
 
-#include "src/ECS/EntityManager.h"
 #include "src/Input/sdlinputbinding.h"
+#include "src/ECS/EntityManager.h"
 
 namespace Engine
 {

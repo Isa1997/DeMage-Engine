@@ -1,6 +1,6 @@
 #include "precomp.h"
 
-#include "Logger.h"
+#include "src/Logger/Logger.h"
 
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/dist_sink.h>
@@ -16,7 +16,6 @@ using consoleSink_t = spdlog::sinks::windebug_sink_st;
 using consoleSink_t = spdlog::sinks::stdout_sink_st;
 #endif
 
-static const std::string filepath{ "engine.log" };
 using fileSink_t = spdlog::sinks::basic_file_sink_st;
 
 void Engine::Logger::Init()

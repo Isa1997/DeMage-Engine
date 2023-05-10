@@ -1,6 +1,8 @@
 #include "precomp.h"
 
-#include "ijsonparser.h"
+#include "src/IJSONParser/ijsonparser.h"
+
+#include <fstream>
 
 namespace Engine
 {

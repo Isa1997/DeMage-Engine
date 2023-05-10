@@ -7,5 +7,3 @@
 #include <string>
 #include <vector>
 #include <map>
-
-typedef unsigned long EEventType;

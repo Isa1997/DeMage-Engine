@@ -1,12 +1,10 @@
 #include "precomp.h"
 
-#include "RenderSystem.h"
+#include "src/Render/RenderSystem.h"
 
-#include "ECS/EntityManager.h"
-#include "Render/Renderer.h"
-#include "Render/Window.h"
-#include <SDL.h>
-#include <SDL_image.h>
+#include "src/ECS/EntityManager.h"
+#include "src/Render/Renderer.h"
+#include "src/Render/Window.h"
 
 namespace Engine
 {
@@ -82,5 +80,4 @@ namespace Engine
     {
         m_Renderer->SetBackgroundColor(col_);
     }
-
 }

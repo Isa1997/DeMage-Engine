@@ -1,3 +1,3 @@
 #include "precomp.h"
 
-#include "ECS/Component.h"
+#include "src/ECS/Component.h"

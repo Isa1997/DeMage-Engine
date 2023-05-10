@@ -1,7 +1,7 @@
 #pragma once
-#include "ECS/Component.h"
 
-#include "Logger/Logger.h"
+#include "src/ECS/Component.h"
+#include "src/Logger/Logger.h"
 
 namespace Engine
 {
