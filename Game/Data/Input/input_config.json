@@ -1,5 +1,5 @@
 {
-  "Controlls": {
+  "Controlls": [
     {
       "Name": "PlayerMoveUp",
       "Bindings": {
@@ -10,8 +10,8 @@
           },
           "Button": "DPAD_UP"
         },
-          "Keyboard": "W"
-        }
+        "Keyboard": "W"
+      }
     },
     {
       "Name": "PlayerMoveDown",
@@ -52,5 +52,5 @@
         "Keyboard": "D"
       }
     }
-  }
+  ]
 }
