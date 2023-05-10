@@ -3,28 +3,52 @@
     {
       "Name": "PlayerMoveUp",
       "Bindings": {
-        "Controller": "DPAD_UP",
-        "Keyboard": "W"
-      }
+        "Controller": {
+          "Axis": {
+            "Type": "LS_UP",
+            "Threshold": 8000
+          },
+          "Button": "DPAD_UP"
+        },
+          "Keyboard": "W"
+        }
     },
     {
       "Name": "PlayerMoveDown",
       "Bindings": {
-        "Controller": "DPAD_DOWN",
+        "Controller": {
+          "Axis": {
+            "Type": "LS_DOWN",
+            "Threshold": -8000
+          },
+          "Button": "DPAD_DOWN"
+        },
         "Keyboard": "S"
       }
     },
     {
       "Name": "PlayerMoveLeft",
       "Bindings": {
-        "Controller": "DPAD_LEFT",
+        "Controller": {
+          "Axis": {
+            "Type": "LS_LEFT",
+            "Threshold": -8000
+          },
+          "Button": "DPAD_LEFT"
+        },
         "Keyboard": "A"
       }
     },
     {
       "Name": "PlayerMoveRight",
       "Bindings": {
-        "Controller": "DPAD_RIGHT",
+        "Controller": {
+          "Axis": {
+            "Type": "LS_RIGHT",
+            "Threshold": 8000
+          },
+          "Button": "DPAD_RIGHT"
+        },
         "Keyboard": "D"
       }
     }

@@ -68,6 +68,10 @@ namespace Engine
                         m_EngineSystem.m_InputManager->ToggleActiveInputSource();
                     }
                 }
+                else if (event.type == SDL_JOYAXISMOTION)
+                {
+                    m_EngineSystem.m_InputManager->UpdateAxisValues(event.jaxis.axis, event.jaxis.value);
+                }
             }
 
             auto frameTime = SDL_GetPerformanceCounter();

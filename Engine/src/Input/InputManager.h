@@ -26,9 +26,9 @@ namespace Engine
 
         void SwitchActiveInputSource(EInputSource newSource);
         void ToggleActiveInputSource();
+        void UpdateAxisValues(unsigned index, long int value);
 
         static bool IsActionActive(InputComponent* inputComponent, EInputAction targetAction);
-
 
         void ProcessJSON(json input) override;
 
@@ -40,11 +40,14 @@ namespace Engine
 
         SDL_Scancode FindKeyboardSDLBinding(const std::string& input) const;
         SDL_GameControllerButton FindControllerSDLBinding(const std::string& input) const;
+        SDL_GameControllerAxis FindAxisSDLBinding(const std::string& input) const;
 
         SDL_GameController* m_ActiveController = nullptr;
 
         std::unordered_map<EInputAction, InputBinding> m_InputActions{ };
         std::unordered_map<EInputAction, EInputActionState> m_InputActionStates{ };
+
+        std::unordered_map<SDL_GameControllerAxis, long int> m_AxisValues;
 
         EInputSource m_InputSource{ EInputSource::Keyboard };
 

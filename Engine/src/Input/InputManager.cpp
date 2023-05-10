@@ -78,7 +78,28 @@ namespace Engine
             }
             else if (m_InputSource == EInputSource::Controller && m_ActiveController != nullptr)
             {
-                isPressed = ControllerButtonDown(m_ActiveController, key.m_ControllerButton) == 1 ? true : false;
+                const ControllerBinding& controllerBinding = key.m_ControllerBinding;
+                bool isButtonDown = ControllerButtonDown(m_ActiveController, controllerBinding.m_ControllerButton) == 1 ? true : false;
+                bool isAxisActive = false;
+                ControllerAxis axis = controllerBinding.m_Axis;
+                if (axis != ControllerAxis::SDL_CONTROLLER_AXIS_INVALID)
+                {
+                  const long int axisValue = m_AxisValues.find(axis) != m_AxisValues.end() ? m_AxisValues[axis] : 0;
+                  if (axisValue != 0)
+                  {
+                      const long int axisThreshold = controllerBinding.m_ThreshholdValue;
+                      if (axisThreshold < 0)
+                      {
+                          isAxisActive = axisValue < axisThreshold;
+                      }
+                      else
+                      {
+                          isAxisActive = axisValue > axisThreshold;
+                      }
+                  }
+                }
+
+                isPressed = isButtonDown || isAxisActive;
             }
 
             switch (m_InputActionStates[action])
@@ -100,7 +121,6 @@ namespace Engine
                 break;
             }
             default:
-                //ASSERT("Unknown EInputActionState {0}", m_InputActionStates[action]);
                 m_InputActionStates[action] = EInputActionState::None;
                 break;
             }
@@ -135,6 +155,11 @@ namespace Engine
         }
     }
 
+    void InputManager::UpdateAxisValues(unsigned index, long int value)
+    {
+        m_AxisValues[static_cast<SDL_GameControllerAxis>(index)] = value;
+    }
+
     bool InputManager::IsButtonActionActive(EInputAction _eAction, EInputActionState _eState) const
     {
         if (m_InputActionStates.find(_eAction) == m_InputActionStates.end())
@@ -150,6 +175,7 @@ namespace Engine
     {
         m_InputActionStates.clear();
         m_InputActions.clear();
+        m_AxisValues.clear();
 
         ProcessJSON(ReadFile(s_BindingInputFile));
     }
@@ -168,14 +194,31 @@ namespace Engine
         {
             std::string controllName = controll["Name"];
 
+            const auto& x = controll.find("Bindings");
             const auto& binding  = controll["Bindings"];
+            
+            ControllerBinding controllerBinding;
+            const auto& controller = binding["Controller"];
+
+            const auto& axis = controller.find("Axis");
+            if (axis != controller.cend())
+            {
+                std::string type = axis->at("Type");
+                long int threshoald = axis->at("Threshold");
+                controllerBinding.m_Axis = FindAxisSDLBinding(type);
+                controllerBinding.m_ThreshholdValue = threshoald;
+            }
+
+            const auto& controllerButton = controller.find("Button");
+            if (controllerButton != controller.cend())
+            {
+                controllerBinding.m_ControllerButton = FindControllerSDLBinding(*controllerButton);
+            }
+
             std::string keyboard = binding["Keyboard"];
-            std::string controller = binding["Controller"];
-
             SDL_Scancode keyboardCode = FindKeyboardSDLBinding(keyboard);
-            SDL_GameControllerButton controllerCode = FindControllerSDLBinding(controller);
 
-            m_InputActions[controllName] = { keyboardCode, controllerCode };
+            m_InputActions[controllName] = { keyboardCode, controllerBinding };
         }
     }
 
@@ -207,6 +250,21 @@ namespace Engine
             controllerCode = controllerMapping->second;
         }
         return controllerCode;
+    }
+
+    SDL_GameControllerAxis InputManager::FindAxisSDLBinding(const std::string& input) const
+    {
+        SDL_GameControllerAxis axisCode = SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_INVALID;
+        const auto& controllerAxisMapping = g_ControllerAxisMapping.find(input);
+        if (controllerAxisMapping == g_ControllerAxisMapping.end())
+        {
+            LOG_CRITICAL("Could not find controll Name in mapping! ControllName = %s", input);
+        }
+        else
+        {
+            axisCode = controllerAxisMapping->second;
+        }
+        return axisCode;
     }
 
     bool InputManager::IsActionActive(InputComponent* inputComponent, EInputAction targetAction)

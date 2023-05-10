@@ -81,4 +81,23 @@ namespace Engine
 		{"DPAD_LEFT" , SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_DPAD_LEFT},
 		{"DPAD_RIGHT" , SDL_GameControllerButton::SDL_CONTROLLER_BUTTON_DPAD_RIGHT}
 	};
+
+	inline static const std::map<std::string, SDL_GameControllerAxis> g_ControllerAxisMapping =
+	{
+		// Left stick
+		{"LS_UP" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY},
+		{"LS_DOWN" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTY},
+		{"LS_LEFT" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX},
+		{"LS_RIGHT" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_LEFTX},
+
+		// Right stick
+		{"RS_UP" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_RIGHTY},
+		{"RS_DOWN" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_RIGHTY},
+		{"RS_LEFT" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_RIGHTX},
+		{"RS_RIGHT" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_RIGHTX},
+
+		// Triggers
+		{"TRIGGER_LEFT" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_TRIGGERLEFT},
+		{"TRIGGER_RIGHT" , SDL_GameControllerAxis::SDL_CONTROLLER_AXIS_TRIGGERRIGHT}
+	};
 }
