@@ -29,3 +29,4 @@ using Color = glm::u8vec4;
 #include <SDL.h>
 #include <SDL_mixer.h>
 #include <SDL_image.h>
+#include <SDL2/SDL_gamecontroller.h>
