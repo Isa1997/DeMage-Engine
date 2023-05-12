@@ -9,6 +9,6 @@ namespace Engine
     public:
         virtual void Broadcast() = 0;
         virtual Channel* GetChannel() = 0;
-        virtual ~Event() {}
+        virtual ~Event() = default;
     };
 }

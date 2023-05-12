@@ -1,9 +1,9 @@
 #include "precomp.h"
 
-#include "ECS/EntityManager.h"
+#include "src/ECS/EntityManager.h"
 
-#include "ECS/Entity.h"
-#include "Render/Texture.h"
+#include "src/ECS/Entity.h"
+#include "src/Render/Texture.h"
 
 namespace Engine
 {

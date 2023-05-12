@@ -8,6 +8,4 @@ namespace Engine
 		Controller,
 		Invalid
 	};
-
-
 }

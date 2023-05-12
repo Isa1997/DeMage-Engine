@@ -1,14 +1,14 @@
 #include "precomp.h"
 
-#include "PhysicsSystem.h"
+#include "src/Physics/PhysicsSystem.h"
 
-#include "ECS/Component.h"
-#include "ECS/EntityManager.h"
+#include "src/ECS/Component.h"
+#include "src/ECS/EntityManager.h"
 
 namespace Engine
 {
-    bool CheckForCollision(Entity * entity1, Entity * entity2);
-    bool CheckForCollisionAABoxVsCircle(Entity * entity1, Entity * entity2);
+    bool CheckForCollision(Entity* entity1, Entity* entity2);
+    bool CheckForCollisionAABoxVsCircle(Entity* entity1, Entity* entity2);
 
     bool PhysicsSystem::Init()
     {
