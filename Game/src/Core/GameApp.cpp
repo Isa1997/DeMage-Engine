@@ -1,14 +1,14 @@
 
 #include "src/precomp.h"
 
-#include "GameApp.h"
+#include "src/Core/GameApp.h"
 
-#include <Core/EntryPoint.h>
-#include <ECS/Component.h>
-#include <Engine.h>
+#include "src/Core/EntryPoint.h"
+#include "src/ECS/Component.h"
+#include "src/Engine.h"
 #include "src/Entities/PlayerController.h"
 #include "src/Entities/CameraController.h"
-#include <Logger/Logger.h>
+#include "src/Logger/Logger.h"
 
 void Game::GameApp::GameSpecificWindowData()
 {
@@ -101,5 +101,4 @@ void Game::GameApp::InitPlayer()
     inputComp->inputActions.push_back(std::string("PlayerMoveDown"));
 
     m_EngineSystem.m_EntityManager->AddEntity(std::move(player));
-
 }

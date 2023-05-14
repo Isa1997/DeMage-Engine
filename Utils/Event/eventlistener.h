@@ -1,7 +1,5 @@
 #pragma once
 
-//typedef  funvoid (*func_t)(Engine::Event*);
-
 namespace Engine
 {
     class Event;

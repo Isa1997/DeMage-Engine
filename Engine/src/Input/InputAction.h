@@ -2,7 +2,6 @@
 
 namespace Engine
 {
-
     enum class EInputActionState
     {
         None = 0,

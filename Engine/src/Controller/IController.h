@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Core/EngineSystems.h"
+#include "src/Core/EngineSystems.h"
 
 namespace Engine
 {
 	class IController
 	{
 	public:
-		virtual ~IController() {}
+		virtual ~IController() = default;
 		virtual void Start() {}
 		virtual void Update(float dt, EngineSystems& engine) = 0;
 		virtual void Shutdown() {}

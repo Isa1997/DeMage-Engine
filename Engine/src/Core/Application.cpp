@@ -1,11 +1,11 @@
 #include "precomp.h"
 
-#include "Application.h"
+#include "src/Core/Application.h"
 
-#include "Render/Renderer.h"
-#include "Render/Texture.h"
-#include "Render/Window.h"
-#include "Render/WindowData.h"
+#include "src/Input/inputenums.h"
+#include "src/Render/Renderer.h"
+#include "src/Render/Texture.h"
+#include "src/Render/Window.h"
 
 #ifdef IMGUI
 #include <imgui_impl_sdl2.h>
@@ -62,6 +62,21 @@ namespace Engine
                 if (event.type == SDL_QUIT)
                 {
                     m_Running = false;
+                }
+                else if (event.type == SDL_CONTROLLERDEVICEADDED)
+                {
+                    m_EngineSystem.m_InputManager->SwitchActiveInputSource(EInputSource::Controller);
+                }
+                else if (event.type == SDL_KEYDOWN)
+                {
+                    if (event.key.keysym.scancode == SDL_SCANCODE_K)
+                    {
+                        m_EngineSystem.m_InputManager->ToggleActiveInputSource();
+                    }
+                }
+                else if (event.type == SDL_JOYAXISMOTION)
+                {
+                    m_EngineSystem.m_InputManager->UpdateAxisValues(event.jaxis.axis, event.jaxis.value);
                 }
             }
 

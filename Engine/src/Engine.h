@@ -1,24 +1,24 @@
 #pragma once
 
-#include "Controller/IController.h"
+#include "src/Controller/IController.h"
 
-#include "Core/Application.h"
+#include "src/Core/Application.h"
 
-#include "Logger/Logger.h"
+#include "src/ECS/Component.h"
+#include "src/ECS/Entity.h"
+#include "src/ECS/EntityManager.h"
 
-#include "ECS/Component.h"
-#include "ECS/Entity.h"
-#include "ECS/EntityManager.h"
+#include "src/Input/InputAction.h"
+#include "src/Input/InputManager.h"
 
-#include "Input/InputAction.h"
-#include "Input/InputManager.h"
+#include "src/Logger/Logger.h"
 
-#include "Physics/PhysicsSystem.h"
+#include "src/Physics/PhysicsSystem.h"
 
-#include "Render/Renderer.h"
-#include "Render/RenderSystem.h"
-#include "Render/Texture.h"
-#include "Render/TextureManager.h"
+#include "src/Render/Renderer.h"
+#include "src/Render/RenderSystem.h"
+#include "src/Render/Texture.h"
+#include "src/Render/TextureManager.h"
 
 #include <SDL.h>
 #include <SDL_mixer.h>

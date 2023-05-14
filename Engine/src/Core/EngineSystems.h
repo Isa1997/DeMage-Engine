@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Audio/AudioSystem.h"
-#include "ECS/EntityManager.h"
-#include "Input/InputManager.h"
-#include "Render/RenderSystem.h"
-#include "Render/WindowData.h"
-#include "Render/TextureManager.h"
-#include "Physics/PhysicsSystem.h"
+#include "src/Audio/AudioSystem.h"
+#include "src/ECS/EntityManager.h"
+#include "src/Input/InputManager.h"
+#include "src/Physics/PhysicsSystem.h"
+#include "src/Render/RenderSystem.h"
+#include "src/Render/WindowData.h"
+#include "src/Render/TextureManager.h"
 
 namespace Engine
 {

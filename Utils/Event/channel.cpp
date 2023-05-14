@@ -1,9 +1,7 @@
 #include "precomp.h"
-
 #include "Event/channel.h"
 
 #include "Event/event.h"
-#include "Event/eventlistener.h"
 
 namespace Engine
 {
@@ -16,6 +14,4 @@ namespace Engine
     {
         m_Listeners.erase(std::find(m_Listeners.begin(), m_Listeners.end(), listener));
     }
-
-    // Channel TestChannel::m_Channel = Channel();
 }

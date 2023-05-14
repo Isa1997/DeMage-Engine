@@ -1,6 +1,6 @@
 #include "src/precomp.h"
 
-#include "CameraController.h"
+#include "src/Entities/CameraController.h"
 
 namespace Game
 {

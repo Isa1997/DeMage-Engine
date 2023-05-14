@@ -1,12 +1,11 @@
 #pragma once
 
-#include <memory>
 #include <spdlog/spdlog.h>
 
 using externLogger_t = spdlog::logger;
 
-namespace Engine {
-
+namespace Engine
+{
     class Logger
     {
     public:

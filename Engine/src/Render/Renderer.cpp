@@ -1,10 +1,10 @@
 #include "precomp.h"
 
-#include "Renderer.h"
+#include "src/Render/Renderer.h"
 
-#include "ECS/Entity.h"
-#include "Render/Window.h"
-#include "Render/Texture.h"
+#include "src/ECS/Entity.h"
+#include "src/Render/Window.h"
+#include "src/Render/Texture.h"
 
 namespace Engine
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Input/InputAction.h"
+#include "src/Input/InputAction.h"
 
 using ComponentTypeID = std::size_t;
 

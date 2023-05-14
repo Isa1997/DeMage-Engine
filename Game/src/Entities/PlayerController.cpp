@@ -1,6 +1,6 @@
 #include "src/precomp.h"
 
-#include "PlayerController.h"
+#include "src/Entities/PlayerController.h"
 
 namespace Game
 {

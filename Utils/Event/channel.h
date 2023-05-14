@@ -1,17 +1,13 @@
 #pragma once
 
-namespace Engine
-{
-    class EventListener;
-    class Event;
-}
+#include "Event/eventlistener.h"
 
 namespace Engine
 {
+    class Event;
+
     class Channel
     {
-        //std::map<EEventType, std::vector<EventListener&>> m_Listeners;void (*callback)(const Event*)
-
     public:
         void RegisterListener(EventListener* listener);
         void UnregisterListener(EventListener* listener);
@@ -28,4 +24,4 @@ namespace Engine
     private:
             std::vector<EventListener*> m_Listeners;
     };
-} // namespace Engine
+}

@@ -1,8 +1,8 @@
 #include "precomp.h"
 
-#include "Texture.h"
+#include "src/Render/Texture.h"
 
-#include "Render/Renderer.h"
+#include "src/Render/Renderer.h"
 
 namespace Engine
 {

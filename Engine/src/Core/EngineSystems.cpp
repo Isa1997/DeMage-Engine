@@ -1,8 +1,6 @@
 #include "precomp.h"
 
-#include "EngineSystems.h"
-
-#include "Render/WindowData.h"
+#include "src/Core/EngineSystems.h"
 
 namespace Engine
 {

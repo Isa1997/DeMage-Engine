@@ -4,7 +4,6 @@ struct SDL_Texture;
 
 namespace Engine
 {
-
     class Renderer;
 
     struct Texture
