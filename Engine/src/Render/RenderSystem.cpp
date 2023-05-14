@@ -31,8 +31,16 @@ namespace Engine
             LOG_CRITICAL("Unable to initialize renderer");
             return false;
         }
+        
+#ifdef IMGUI
+        m_ImguiRender = std::make_unique<ImguiRender>();
 
-        m_Renderer->Init(windowData_);
+        if (!m_ImguiRender->Init(*m_Renderer.get()))
+        {
+            LOG_CRITICAL("Unable to initialize ImGui Renderer");
+            return false;
+        }
+#endif
 
         LOG_INFO("RenderSystem initialized successfully");
         return true;
@@ -63,6 +71,10 @@ namespace Engine
         auto renderables = entityManager->GetAllEntitiesWithComponents<TransformComponent, SpriteComponent>();
         m_Renderer->DrawEntities(renderables, camera);
 
+#ifdef IMGUI
+        m_ImguiRender->Render();
+#endif
+
         m_Renderer->EndScene();
     }
 
@@ -80,4 +92,11 @@ namespace Engine
     {
         m_Renderer->SetBackgroundColor(col_);
     }
+
+#ifdef IMGUI
+    void RenderSystem::ToggleImGuiWindow()
+    {
+        m_ImguiRender->SetIsActive(!m_ImguiRender->GetIsActive());
+    }
+#endif
 }

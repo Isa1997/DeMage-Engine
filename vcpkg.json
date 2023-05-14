@@ -4,11 +4,19 @@
   "dependencies": [ 
     "sdl2",
 	"sdl2-mixer",
-	"sdl2-image",
+	{
+		"name": "sdl2-image",
+		"default-features": false,
+		"features": ["libjpeg-turbo","libwebp", "tiff"]
+	},
 	"sdl2-ttf",
 	"spdlog",
 	"glm",
 	"nlohmann-json",
-	"imgui"
+	{
+		"name": "imgui",
+		"default-features": false,
+		"features": ["dx12-binding","win32-binding", "sdl2-binding", "sdl2-renderer-binding","docking-experimental"]
+	}
   ]
 }

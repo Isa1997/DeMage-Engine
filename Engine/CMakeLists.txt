@@ -110,6 +110,13 @@ set(src__IJSONParser
 
 source_group("src\\IJSONParser" FILES ${src__IJSONParser})
 
+set(src__imgui
+    "src/imgui/imguiRender.h"
+    "src/imgui/imguiRender.cpp"
+)
+
+source_group("src\\imgui" FILES ${src__imgui})
+
 set(src__Input
     "src/Input/InputAction.h"    
     "src/Input/inputbinding.h"   
@@ -158,6 +165,7 @@ set(ALL_FILES
     ${src__Audio}
     ${src__ECS}
     ${src__IJSONParser}
+    ${src__imgui}
     ${src__Input}
     ${src__Logger}
     ${src__PhysicsSystem}
@@ -175,7 +183,8 @@ if(WIN32)
     add_definitions(-DWINDOWS)
 endif()
 
-add_definitions(-DLOGFPS)
+#add_definitions(-DLOGFPS)
+add_definitions(-DIMGUI)
 
 add_definitions(-DDEBUGLOG)
 add_definitions(-DDEBUGENTITY)

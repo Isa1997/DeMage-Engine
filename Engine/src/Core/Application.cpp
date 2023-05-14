@@ -7,6 +7,10 @@
 #include "src/Render/Texture.h"
 #include "src/Render/Window.h"
 
+#ifdef IMGUI
+#include <imgui_impl_sdl2.h>
+#endif
+
 namespace Engine 
 {
     bool Application::Init()
@@ -52,6 +56,9 @@ namespace Engine
         {
             while (SDL_PollEvent(&event) != 0)
             {
+#ifdef IMGUI
+                ImGui_ImplSDL2_ProcessEvent(&event);
+#endif
                 if (event.type == SDL_QUIT)
                 {
                     m_Running = false;
@@ -66,6 +73,12 @@ namespace Engine
                     {
                         m_EngineSystem.m_InputManager->ToggleActiveInputSource();
                     }
+#ifdef IMGUI
+                    else if (event.key.keysym.scancode == SDL_SCANCODE_APPLICATION)
+                    {
+                        m_EngineSystem.m_RenderSystem->ToggleImGuiWindow();
+                    }
+#endif
                 }
                 else if (event.type == SDL_JOYAXISMOTION)
                 {
