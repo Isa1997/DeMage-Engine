@@ -31,6 +31,7 @@ namespace Engine
 #ifdef IMGUI
     public:
         std::unique_ptr<ImguiRender> m_ImguiRender;
+        void ToggleImGuiWindow();
 #endif
     };
 }

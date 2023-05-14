@@ -73,6 +73,12 @@ namespace Engine
                     {
                         m_EngineSystem.m_InputManager->ToggleActiveInputSource();
                     }
+#ifdef IMGUI
+                    else if (event.key.keysym.scancode == SDL_SCANCODE_APPLICATION)
+                    {
+                        m_EngineSystem.m_RenderSystem->ToggleImGuiWindow();
+                    }
+#endif
                 }
                 else if (event.type == SDL_JOYAXISMOTION)
                 {

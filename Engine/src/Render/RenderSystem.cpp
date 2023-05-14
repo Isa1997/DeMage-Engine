@@ -92,4 +92,11 @@ namespace Engine
     {
         m_Renderer->SetBackgroundColor(col_);
     }
+
+#ifdef IMGUI
+    void RenderSystem::ToggleImGuiWindow()
+    {
+        m_ImguiRender->SetIsActive(!m_ImguiRender->GetIsActive());
+    }
+#endif
 }

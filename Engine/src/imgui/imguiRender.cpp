@@ -3,6 +3,7 @@
 #include "src/imgui/imguiRender.h"
 
 #ifdef IMGUI
+
 #include <imgui.h>
 #include <imgui_impl_sdl2.h>
 #include <imgui_impl_sdlrenderer.h>
@@ -30,6 +31,9 @@ void ImguiRender::Shutdown()
 
 void ImguiRender::Render()
 {
+    if (m_IsActive == false)
+        return;
+
     ImGui_ImplSDLRenderer_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
@@ -38,17 +42,19 @@ void ImguiRender::Render()
     ImGui::Text("Hello World");
     ImGui::End();
 
-    ImGui::Begin("sss panel");
-    ImGui::Text("Hello World");
-    ImGui::End();
 
     ImGui::Render();
 
-    ImGui_ImplSDLRenderer_RenderDrawData(
-        ImGui::GetDrawData()
-    );
+    ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
 }
 
+void ImguiRender::SetIsActive(bool isActive)
+{
+    m_IsActive = isActive;
+}
 
-
+bool ImguiRender::GetIsActive() const
+{
+    return m_IsActive;
+}
 #endif

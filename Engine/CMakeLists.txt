@@ -183,7 +183,7 @@ if(WIN32)
     add_definitions(-DWINDOWS)
 endif()
 
-add_definitions(-DLOGFPS)
+#add_definitions(-DLOGFPS)
 add_definitions(-DIMGUI)
 
 add_definitions(-DDEBUGLOG)
