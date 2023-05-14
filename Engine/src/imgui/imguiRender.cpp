@@ -15,6 +15,7 @@ bool ImguiRender::Init(const Engine::Renderer& renderer)
     ImGuiIO& io{ ImGui::GetIO() };
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     ImGui_ImplSDL2_InitForSDLRenderer(renderer.GetNativeWindow(), renderer.GetNativeRenderer());
     ImGui_ImplSDLRenderer_Init(renderer.GetNativeRenderer());
@@ -38,10 +39,32 @@ void ImguiRender::Render()
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
-    ImGui::Begin("Some panel");
-    ImGui::Text("Hello World");
+    ImGui::Begin("My First Tool", &m_IsActive, ImGuiWindowFlags_MenuBar);
+
+    if (ImGui::BeginMenuBar())
+    {
+        if (ImGui::BeginMenu("File"))
+        {
+            static bool isSelected = false;
+            if (ImGui::MenuItem("Open..", nullptr, &isSelected)) {}
+            if (ImGui::MenuItem("Save")) {
+
+            }
+            if (ImGui::MenuItem("Close")) { }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMenuBar();
+    }
+
     ImGui::End();
 
+    ImGui::Begin("Test");
+    ImGui::Text("Test");
+    ImGui::End();
+    
+    ImGui::Begin("Test2");
+    ImGui::Text("Test2");
+    ImGui::End();
 
     ImGui::Render();
 
