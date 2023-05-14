@@ -7,6 +7,10 @@
 #include "Render/Window.h"
 #include "Render/WindowData.h"
 
+#ifdef IMGUI
+#include <imgui_impl_sdl2.h>
+#endif
+
 namespace Engine 
 {
     bool Application::Init()
@@ -52,6 +56,9 @@ namespace Engine
         {
             while (SDL_PollEvent(&event) != 0)
             {
+#ifdef IMGUI
+                ImGui_ImplSDL2_ProcessEvent(&event);
+#endif
                 if (event.type == SDL_QUIT)
                 {
                     m_Running = false;

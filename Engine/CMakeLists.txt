@@ -103,6 +103,13 @@ set(src__ECS
 
 source_group("src\\ECS" FILES ${src__ECS})
 
+set(src__imgui
+    "src/imgui/imguiRender.h"
+    "src/imgui/imguiRender.cpp"
+)
+
+source_group("src\\imgui" FILES ${src__imgui})
+
 set(src__Input
     "src/Input/InputAction.h"
     "src/Input/InputManager.cpp"
@@ -147,6 +154,7 @@ set(ALL_FILES
     ${src__Core}
     ${src__Audio}
     ${src__ECS}
+    ${src__imgui}
     ${src__Input}
     ${src__Logger}
     ${src__PhysicsSystem}
@@ -165,6 +173,7 @@ if(WIN32)
 endif()
 
 add_definitions(-DLOGFPS)
+add_definitions(-DIMGUI)
 
 add_definitions(-DDEBUGLOG)
 add_definitions(-DDEBUGENTITY)

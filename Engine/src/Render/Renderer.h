@@ -3,6 +3,7 @@
 #include "Render/WindowData.h"
 
 struct SDL_Renderer;
+struct SDL_Window;
 
 namespace Engine
 {
@@ -22,6 +23,7 @@ namespace Engine
         void EndScene() const;
 
         SDL_Renderer* GetNativeRenderer() const { return m_NativeRenderer; }
+        SDL_Window* GetNativeWindow() const;
 
         void SetBackgroundColor(unsigned char bgR_, unsigned char bgG_, unsigned char bgB_, unsigned char bgA_);
         void SetBackgroundColor(const Color& col_);

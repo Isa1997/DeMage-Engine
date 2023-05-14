@@ -33,8 +33,16 @@ namespace Engine
             LOG_CRITICAL("Unable to initialize renderer");
             return false;
         }
+        
+#ifdef IMGUI
+        m_ImguiRender = std::make_unique<ImguiRender>();
 
-        m_Renderer->Init(windowData_);
+        if (!m_ImguiRender->Init(*m_Renderer.get()))
+        {
+            LOG_CRITICAL("Unable to initialize ImGui Renderer");
+            return false;
+        }
+#endif
 
         LOG_INFO("RenderSystem initialized successfully");
         return true;
@@ -64,6 +72,10 @@ namespace Engine
         // Find all entities to draw
         auto renderables = entityManager->GetAllEntitiesWithComponents<TransformComponent, SpriteComponent>();
         m_Renderer->DrawEntities(renderables, camera);
+
+#ifdef IMGUI
+        m_ImguiRender->Render();
+#endif
 
         m_Renderer->EndScene();
     }

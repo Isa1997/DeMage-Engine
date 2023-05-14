@@ -147,6 +147,11 @@ namespace Engine
         SDL_RenderPresent(m_NativeRenderer);
     }
 
+    SDL_Window* Renderer::GetNativeWindow() const
+    {
+        return m_Window->GetNativeWindowHandle();
+    }
+
     Renderer::~Renderer()
     {
         Shutdown();

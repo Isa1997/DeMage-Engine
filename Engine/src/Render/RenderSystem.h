@@ -2,6 +2,10 @@
 
 #include "Render/WindowData.h"
 
+#ifdef IMGUI
+#include "src/imgui/imguiRender.h"
+#endif
+
 namespace Engine
 {
     class EntityManager;
@@ -24,5 +28,9 @@ namespace Engine
 
         RenderSystem(const RenderSystem& other) = delete;
         RenderSystem& operator=(RenderSystem& other) = delete;
+#ifdef IMGUI
+    public:
+        std::unique_ptr<ImguiRender> m_ImguiRender;
+#endif
     };
 }
